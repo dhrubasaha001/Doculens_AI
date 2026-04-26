@@ -1,225 +1,79 @@
-# ⚖️ DocuLens AI
+# DocuLens AI
 
-> **Understand legal documents without a lawyer.**
+DocuLens AI is an AI-powered legal document analysis tool designed for everyday people. It uses advanced RAG (Retrieval-Augmented Generation) and local LLMs to instantly isolate risks, summarize clauses, and suggest actionable next steps for contracts, agreements, and notices.
 
-DocuLens AI is an AI-powered web application that helps users analyze and understand legal documents such as contracts, agreements, and notices. It simplifies complex legal language, highlights potential risks, and provides clear, actionable insights — all in seconds.
+## Features
 
----
+- 📄 **Instant PDF Analysis**: Upload any PDF document to receive a quick verdict on its contents and overall risk level.
+- 🔍 **Key Clause Extraction**: Automatically identifies and highlights obligations, restrictions, and critical clauses.
+- ⚠️ **Risk Identification**: Pinpoints specific risks within the document and explains why they matter in simple terms.
+- 💬 **Interactive Q&A**: Ask custom questions about your document and get answers directly extracted from the text.
+- ⚖️ **User Rights Summary**: Generates a practical, easy-to-understand list of your rights based on the document.
+- ✨ **Plain English Explanations**: Select any complex legal clause to get a 5th-grade reading level explanation.
 
-## 🚀 Problem
-
-Millions of people sign legal documents without fully understanding them:
-
-* Rental agreements
-* Job contracts
-* Terms & conditions
-* Legal notices
-
-Legal consultation is often expensive, time-consuming, or inaccessible—especially for students and individuals.
-
----
-
-## 💡 Solution
-
-DocuLens AI bridges this gap by making legal understanding simple and accessible.
-
-Upload a document or paste text, and instantly receive:
-
-* 📄 A simplified summary
-* ⚠️ Risk analysis (high, medium, low)
-* 📌 Key clauses extracted
-* 🧭 Rights and important considerations
-* ✅ Suggested next actions
-
----
-
-## 🧠 Key Features
-
-### 📤 Document Input
-
-* Upload PDF files
-* Paste raw legal text
-* Sample document support for quick demo
-
----
-
-### 📊 AI-Powered Analysis
-
-* Extracts key clauses (obligations, deadlines, payments)
-* Identifies risky or unfair terms
-* Converts complex legal language into plain English
-
----
-
-### ⚠️ Risk Detection System
-
-* 🔴 High Risk
-* 🟡 Medium Risk
-* 🟢 Low Risk
-
-Includes a **Document Risk Score (0–100)** for quick evaluation.
-
----
-
-### 🧭 Rights & Guidance
-
-* Highlights what the user should be aware of
-* Suggests practical next steps
-
----
-
-### 🔍 Interactive Explanation
-
-* Click any clause
-* Instantly get a simplified explanation in a popup
-
----
-
-## 🖥️ Tech Stack
+## Tech Stack
 
 ### Frontend
-
-* React (Vite / Next.js structure)
-* Tailwind CSS
-* Component-based architecture
+- **React.js** (Vite)
+- **Tailwind CSS** (for styling and glassmorphism UI)
+- **Framer Motion** (for smooth animations and transitions)
+- **Lucide React** (icons)
 
 ### Backend
+- **FastAPI** (Python web framework)
+- **LangChain** (for RAG and LLM orchestration)
+- **Ollama** (local LLM inference with Mistral)
+- **ChromaDB** (local vector database)
 
-* Python (FastAPI)
+## Getting Started
 
-### AI Layer
+### Prerequisites
+- Node.js (v18+)
+- Python (3.9+)
+- [Ollama](https://ollama.ai/) installed locally
 
-* LLM-based structured prompting
-* Chunked document processing for large inputs
+### Setup Ollama
+1. Install Ollama and start the service:
+   ```bash
+   ollama serve
+   ```
+2. Pull the Mistral model:
+   ```bash
+   ollama pull mistral
+   ```
 
-### Document Processing
+### Backend Setup
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+2. Create a virtual environment and install dependencies:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   pip install fastapi uvicorn python-multipart langchain langchain-community chromadb pypdf ollama
+   ```
+3. Run the FastAPI server:
+   ```bash
+   uvicorn main:app --reload --port 8000
+   ```
 
-* PDF text extraction (pdfplumber / PyPDF2)
+### Frontend Setup
+1. Install dependencies in the root directory:
+   ```bash
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+3. Open your browser and navigate to `http://localhost:5173`.
 
----
+## Usage
+1. Upload a PDF document using the drag-and-drop interface.
+2. Wait for the analysis to complete.
+3. Review the summary, risks, and suggested actions.
+4. Use the Q&A panel to ask any specific questions about the document.
 
-## 📂 Project Structure
-
-```
-DocuLens_AI/
-│
-├── backend/
-│   ├── app.py
-│   ├── main.py
-│   ├── prompts.py
-│   ├── rag.py
-│   └── requirements.txt
-│
-├── src/
-│   ├── components/
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-│
-├── README.md
-├── index.html
-└── doculens-preview.html
-```
-
----
-
-## ⚙️ How It Works
-
-1. User uploads a document or pastes text
-2. Backend extracts and processes text
-3. Content is sent to an AI model using structured prompts
-4. AI returns:
-
-   * Summary
-   * Risks
-   * Key clauses
-   * Rights
-   * Actions
-5. Frontend displays results in a clean dashboard
-
----
-
-## 🧪 Running the Project
-
-### 🔹 Backend
-
-```bash
-cd backend
-pip install -r requirements.txt
-python main.py
-```
-
----
-
-### 🔹 Frontend
-
-```bash
-cd src
-npm install
-npm run dev
-```
-
----
-
-## 📈 Scalability
-
-* Handles large documents using chunk-based processing
-* Modular backend architecture for easy scaling
-* Can be extended to support more legal document types
-
----
-
-## 💰 Business Model
-
-DocuLens AI is designed as a scalable SaaS platform:
-
-* **Freemium Model**
-
-  * Free: Limited document analysis
-  * Premium: Unlimited usage + advanced insights
-
-* **Future Opportunities**
-
-  * Integration with education platforms
-  * Tools for freelancers and small businesses
-
----
-
-## 🎯 Use Cases
-
-* Students reviewing agreements
-* Freelancers checking contracts
-* Tenants understanding rental terms
-* Anyone dealing with legal documents
-
----
-
-## ⚠️ Disclaimer
-
-DocuLens AI is designed to assist in understanding legal documents.
-It does **not replace professional legal advice**.
-
----
-
-
-Focus areas:
-
-* Technical execution
-* User experience
-* Real-world impact
-* Clear communication
-
----
-
-## 👨‍💻 Team
-
-* Frontend Developer: Hina Hanif
-* Backend Developer: Dhruba Saha
-
----
-
-## 🌟 Vision
-
-We believe legal understanding should not be limited by cost or complexity.
-
-**DocuLens AI aims to make legal knowledge accessible to everyone.**
+## Disclaimer
+DocuLens AI analyzes documents but does not constitute legal advice. Always consult with a qualified attorney for professional legal assistance.
